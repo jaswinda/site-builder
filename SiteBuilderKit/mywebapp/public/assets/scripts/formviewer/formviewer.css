@@ -1,0 +1,731 @@
+.fb-ui *,
+.fb-ui ::before,
+.fb-ui ::after {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: #e5e7eb;
+}
+
+.fb-ui button {
+  background-color: transparent;
+  background-image: none;
+}
+
+.fb-ui textarea {
+  resize: vertical;
+}
+
+.fb-ui button,
+.fb-ui [role=button] {
+  cursor: pointer;
+}
+
+.fb-ui :disabled {
+  cursor: default;
+}
+
+.fb-ui button, .fb-ui input, .fb-ui optgroup, .fb-ui select, .fb-ui textarea {
+  font-family: inherit;
+  font-feature-settings: inherit;
+  font-variation-settings: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --form-font-family: system-ui, sans-serif;
+  --form-text-color: inherit;
+  --form-font-size: 1rem;
+  --form-line-height: 1.5rem;
+  --form-fields-gap: 0.75rem;
+  --form-primary-color: #3b82f6;
+  --form-primary-border-width: 1px;
+  --form-secondary-border-width: 2px;
+  --form-primary-rounded: 0.25rem;
+  --form-label-color: inherit;
+  --form-label-size: 1rem;
+  --form-label-leading: 1.25rem;
+  --form-label-weight: 600;
+  --form-info-color: inherit;
+  --form-input-font-size: 1rem;
+  --form-input-line-height: 1.5rem;
+  --form-input-background-color: #ffffff30;
+  --form-input-placeholder-color: #9ca3af;
+  --form-input-border-color: rgb(194 194 194);
+  --form-choice-border-color: rgb(194 194 194);
+  --form-switch-background-color: #ccc;
+  --form-switch-knob-color: #fff;
+  --form-switch-focus-offset-color: #fff;
+  --form-dropfile-hover-color: rgba(0, 0, 0, 0.03);
+  --form-dropfile-border-color: rgb(155 155 155);
+  --form-title-font-size: 2.25rem;
+  --form-title-line-height: 2.5rem;
+  --form-title-font-weight: 600;
+  --form-title-color: inherit;
+  --form-desc-font-size: 1rem;
+  --form-desc-line-height: 1.5rem;
+  --form-desc-font-weight: 400;
+  --form-desc-color: inherit;
+  --form-button-background-color: #111827;
+  --form-button-hover-background-color: #1f2937;
+  --form-button-text-color: #fff;
+  --form-button-hover-text-color: #fff;
+}
+
+.dark {
+  /* Dark mode variables */
+  --form-primary-color: rgb(96, 165, 250);
+  --form-text-color: inherit;
+  --form-input-background-color: #38393a;
+  --form-input-placeholder-color: #9ca3af;
+  --form-input-border-color: #4b5563;
+  --form-choice-border-color: #4b5563;
+  --form-switch-background-color: #575757;
+  --form-switch-knob-color: #e0e0e0;
+  --form-switch-focus-offset-color: #000;
+  --form-dropfile-hover-color: rgba(255, 255, 255, 0.1);
+  --form-dropfile-border-color: #4b5563;
+  --form-title-color: inherit;
+  --form-desc-color: inherit;
+  --form-label-color: inherit;
+  --form-info-color: inherit;
+  --form-button-background-color: #2c2c2c;
+  --form-button-hover-background-color: #333;
+  --form-button-text-color: #d1d5db;
+  --form-button-hover-text-color: #d1d5db;
+}
+
+.formview-container {
+  font-family: var(--form-font-family);
+  color: var(--form-color);
+  font-size: var(--form-font-size);
+  line-height: var(--form-line-height);
+  /* animate spin */
+  /* hidden */
+  /* captcha */
+}
+
+.formview-container input, .formview-container textarea, .formview-container select {
+  font-size: var(--form-input-font-size);
+  line-height: var(--form-input-line-height);
+  background-color: var(--form-input-background-color);
+  transition: all 250ms ease-in-out;
+}
+
+.formview-container .text-red-500 {
+  color: #f87171;
+}
+
+.formview-container .btn-submitform {
+  margin-top: 0.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  transition: all 0.2s ease-in-out;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--form-button-background-color);
+  color: var(--form-button-text-color);
+}
+
+.formview-container .btn-submitform:hover {
+  background-color: var(--form-button-hover-background-color);
+  color: var(--form-button-hover-text-color);
+}
+
+.formview-container .btn-submitform:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--form-secondary-border-width) var(--form-primary-color);
+}
+
+.formview-container .custom-class {
+  margin-top: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  transition: all 0.2s ease-in-out;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  box-shadow: var(--default-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.formview-container .custom-class:focus,
+.formview-container .custom-class:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+.formview-container .text-info-color {
+  opacity: 0.7;
+}
+
+.formview-container input::-moz-placeholder {
+  color: var(--form-input-placeholder-color);
+  /* Muted color for placeholders */
+  opacity: 1;
+  /* Ensure visibility */
+}
+
+.formview-container input::placeholder {
+  color: var(--form-input-placeholder-color);
+  /* Muted color for placeholders */
+  opacity: 1;
+  /* Ensure visibility */
+}
+
+.formview-container .form-header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.formview-container .form-title {
+  font-size: var(--form-title-font-size);
+  line-height: var(--form-title-line-height);
+  font-weight: var(--form-title-font-weight);
+  color: var(--form-title-color);
+  margin-bottom: 1rem;
+}
+
+.formview-container .form-desc {
+  font-size: var(--form-desc-font-size);
+  line-height: var(--form-desc-line-height);
+  font-weight: var(--form-desc-font-weight);
+  color: var(--form-desc-color);
+  margin-bottom: 1rem;
+}
+
+.formview-container .switch {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  width: 59px;
+  height: 34px;
+  border: 2px solid transparent;
+  border-radius: 500px;
+  background-color: var(--form-switch-background-color);
+  position: relative;
+  outline: none;
+  transition: all 0.15s ease-in-out;
+}
+
+.formview-container .switch[data-checked=true] {
+  background-color: var(--form-primary-color);
+}
+
+.formview-container .switch-thumb {
+  width: 26px;
+  height: 26px;
+  background: var(--form-switch-knob-color);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  transform: translateY(-50%);
+  transition: transform 0.2s;
+}
+
+.formview-container .switch[data-checked=true] .switch-thumb {
+  transform: translate(24px, -50%);
+}
+
+.formview-container .switch:focus {
+  box-shadow: 0 0 0 2px var(--form-switch-focus-offset-color), 0 0 0 4px var(--form-primary-color), 0 0 rgba(0, 0, 0, 0);
+  /* Fallback for no shadow */
+}
+
+.formview-container .peer-span * {
+  color: inherit;
+}
+
+.formview-container .form-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--form-fields-gap);
+}
+
+.formview-container .form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
+.formview-container .field-label {
+  font-size: var(--form-label-size);
+  line-height: var(--form-label-leading);
+  font-weight: var(--form-label-weight);
+  color: var(--form-label-color);
+  cursor: pointer;
+}
+
+.formview-container .field-label-normal {
+  font-size: var(--form-label-size);
+  line-height: var(--form-label-leading);
+  font-weight: var(--form-label-weight);
+  color: var(--form-label-color);
+}
+
+.formview-container .div-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.formview-container .option-label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.25rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.formview-container .option-label .peer {
+  position: absolute;
+  opacity: 0;
+}
+
+.formview-container .peer-span-rounded {
+  transition: all 0.2s ease-in-out;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 0.25rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-width: var(--form-primary-border-width);
+  border-color: var(--form-choice-border-color);
+  border-radius: 50%;
+  color: transparent;
+}
+
+.formview-container .peer:checked ~ .peer-span-rounded {
+  border-color: var(--form-primary-color);
+  color: var(--form-primary-color);
+}
+
+.formview-container .peer:focus ~ .peer-span-rounded {
+  box-shadow: 0 0 0 var(--form-secondary-border-width) var(--form-primary-color);
+  border-color: transparent;
+  outline-offset: 3px;
+}
+
+.formview-container .peer-span-square {
+  transition: all 0.2s ease-in-out;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 0.25rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-width: var(--form-primary-border-width);
+  border-color: var(--form-choice-border-color);
+  border-radius: 0.125rem;
+  color: transparent;
+}
+
+.formview-container .peer:checked ~ .peer-span-square {
+  border-color: var(--form-primary-color);
+  color: var(--form-primary-color);
+}
+
+.formview-container .peer:focus ~ .peer-span-square {
+  box-shadow: 0 0 0 var(--form-secondary-border-width) var(--form-primary-color);
+  border-color: transparent;
+  outline-offset: 3px;
+}
+
+.formview-container select {
+  display: block;
+  width: 100%;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-width: var(--form-primary-border-width);
+  border-color: var(--form-input-border-color);
+  outline: none;
+  border-radius: var(--form-primary-rounded);
+}
+
+.formview-container select:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 var(--form-secondary-border-width) var(--form-primary-color);
+}
+
+.formview-container .select-arrow {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  color: #6b7280;
+  /* Tailwind's gray-500 */
+  height: 100%;
+}
+
+.formview-container .select-arrow svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.formview-container .input-other {
+  margin-top: 0.5rem;
+}
+
+.formview-container .input-other.hidden {
+  display: none;
+}
+
+.formview-container .input-color {
+  width: 44px;
+  height: 44px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 2px;
+  padding-right: 2px;
+  border-width: var(--form-primary-border-width);
+  border-color: var(--form-input-border-color);
+  outline: none;
+  border-radius: var(--form-primary-rounded);
+  cursor: pointer;
+}
+
+.formview-container .input-color:focus-visible {
+  border-color: transparent;
+  box-shadow: 0 0 0 var(--form-secondary-border-width) var(--form-primary-color);
+}
+
+.formview-container .file-input-wrapper {
+  position: relative;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 150px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.formview-container .file-input-wrapper:hover {
+  background-color: var(--form-dropfile-hover-color);
+}
+
+.formview-container .file-input-wrapper input[type=file] {
+  opacity: 0;
+  position: absolute;
+}
+
+.formview-container .file-drop-area {
+  transition: all 0.4s ease-in-out;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  border-width: var(--form-primary-border-width);
+  border-color: var(--form-dropfile-border-color);
+  border-style: dashed;
+  border-radius: var(--form-primary-rounded);
+}
+
+.formview-container .peer:focus ~ .file-drop-area {
+  border-width: var(--form-secondary-border-width);
+  border-color: var(--form-primary-color);
+  border-style: dashed;
+  transform: scale(1.007);
+}
+
+.formview-container .file-drop-info {
+  font-size: 0.875rem;
+  color: var(--form-info-color);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.formview-container .file-drop-info-highlight {
+  font-size: 0.875rem;
+  color: var(--form-info-color);
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.formview-container .inp-base {
+  width: 100%;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-width: var(--form-primary-border-width);
+  border-color: var(--form-input-border-color);
+  outline: none;
+  border-radius: var(--form-primary-rounded);
+}
+
+.formview-container .inp-base:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 var(--form-secondary-border-width) var(--form-primary-color);
+}
+
+.formview-container textarea.inp-base {
+  height: 120px;
+}
+
+.formview-container .loading-icon {
+  display: flex;
+  align-items: center;
+}
+
+.formview-container .animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.formview-container .reference_code {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0;
+  width: 0;
+  z-index: -1;
+}
+
+.formview-container .captcha-container {
+  width: 100%;
+}
+
+.dark .formview-container ::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  opacity: 0.7;
+}
+
+.dark .formview-container input[type=number]::-webkit-inner-spin-button {
+  filter: invert(1);
+  opacity: 0.7;
+}
+
+.dark .formview-container input[type=number]::-webkit-outer-spin-button {
+  filter: invert(1);
+  opacity: 0.7;
+}
+
+.result-container {
+  font-family: var(--form-font-family);
+  color: var(--form-color);
+  font-size: var(--form-font-size);
+  line-height: var(--form-line-height);
+  margin-bottom: 1.5rem;
+}
+
+.result-container h1, .result-container h2, .result-container h3, .result-container h4, .result-container h5, .result-container h6 {
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.result-container h1 {
+  font-size: 3.5rem;
+}
+
+.result-container h2 {
+  font-size: 2rem;
+  margin: 1.5rem 0 1.5rem;
+}
+
+.result-container h3 {
+  font-size: 1.5rem;
+  margin: 1.5rem 0 1.5rem;
+}
+
+.result-container h4 {
+  font-size: 1.3rem;
+  margin: 1.5rem 0 1.5rem;
+}
+
+.result-container h5 {
+  font-size: 1.2rem;
+  margin: 1.5rem 0 1.5rem;
+}
+
+.result-container p, .result-container pre, .result-container ol, .result-container ul {
+  margin: 1.5rem 0 1.5rem;
+}
+
+.result-container pre {
+  font-size: 16px;
+  /* This makes text wrap inside <pre> */
+  white-space: pre-wrap;
+  background-color: #f7f7f7;
+}
+
+.result-container pre code.hljs {
+  background-color: #f7f7f7;
+}
+
+.result-container ol {
+  list-style-type: decimal;
+  margin-left: 1rem;
+}
+
+.result-container ol li {
+  margin-bottom: 0.5rem;
+}
+
+.result-container img {
+  margin: 0;
+}
+
+.fb-ui .relative {
+  position: relative;
+}
+
+.fb-ui .hidden {
+  display: none;
+}
+
+.fb-ui .block {
+  display: block;
+}
+
+.fb-ui .flex {
+  display: flex;
+}
+
+.fb-ui .flex-wrap {
+  flex-wrap: wrap;
+}
+
+.fb-ui .flex-col {
+  flex-direction: column;
+}
+
+.fb-ui .justify-between {
+  justify-content: space-between;
+}
+
+.fb-ui .items-center {
+  align-items: center;
+}
+
+.fb-ui .gap-2 {
+  gap: 0.5rem;
+}
+
+.fb-ui .gap-4 {
+  gap: 1rem;
+}
+
+.fb-ui .gap-6 {
+  gap: 1.5rem;
+}
+
+.fb-ui .w-full {
+  width: 100%;
+}
+
+.fb-ui .size-4 {
+  width: 1rem;
+  height: 1rem;
+}
+
+.fb-ui .size-5 {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.fb-ui .mt-1 {
+  margin-top: 0.25rem;
+}
+
+.fb-ui .ml-1 {
+  margin-left: 0.25rem;
+}
+
+.fb-ui .mb-1 {
+  margin-bottom: 0.25rem;
+}
+
+.fb-ui .mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.fb-ui .mt-3 {
+  margin-top: 0.75rem;
+}
+
+.fb-ui .mt-4 {
+  margin-top: 1rem;
+}
+
+.fb-ui .mb-4 {
+  margin-bottom: 1rem;
+}
+
+.fb-ui .mb-5 {
+  margin-bottom: 1.25rem;
+}
+
+.fb-ui .p-1 {
+  padding: 0.25rem;
+}
+
+.fb-ui .pb-0 {
+  padding-bottom: 0;
+}
+
+.fb-ui .px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.fb-ui .text-base {
+  font-size: 1rem;
+}
+
+.dark .fb-ui .btn-base {
+  background-color: #2c2c2c;
+  color: #d1d5db;
+}
+
+.dark .fb-ui .btn-base:hover {
+  background-color: #333;
+}
